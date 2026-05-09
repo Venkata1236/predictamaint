@@ -168,29 +168,29 @@ class PredictiveMaintenanceEnsemble:
         )
 
         if alert_tier == "NORMAL":
-            
-            feature_text = (
-            ", ".join(anomalous_features)
-            if anomalous_features
-            else "sensor drift patterns"
-        )
 
-        recommended_action = (
-            "Anomaly detected. "
-            f"Inspect features: "
-            f"{feature_text}. "
-            "Create maintenance ticket."
-        )
+            recommended_action = (
+                "Machine operating normally. "
+                "Continue routine monitoring."
+            )
 
         elif alert_tier == "ANOMALY":
+
+            feature_text = (
+                ", ".join(anomalous_features)
+                if anomalous_features
+                else "sensor drift patterns"
+            )
+
             recommended_action = (
                 "Anomaly detected. "
                 f"Inspect features: "
-                f"{', '.join(anomalous_features)}. "
+                f"{feature_text}. "
                 "Create maintenance ticket."
             )
 
         else:
+
             recommended_action = (
                 "CRITICAL condition detected. "
                 "Immediate shutdown recommended. "
