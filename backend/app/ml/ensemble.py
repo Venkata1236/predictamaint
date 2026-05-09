@@ -152,10 +152,10 @@ class PredictiveMaintenanceEnsemble:
             + 0.3 * isolation_score
         )
 
-        if ensemble_score < 0.3:
+        if ensemble_score < 0.45:
             alert_tier = "NORMAL"
 
-        elif ensemble_score < 0.7:
+        elif ensemble_score < 0.75:
             alert_tier = "ANOMALY"
 
         else:
@@ -168,10 +168,19 @@ class PredictiveMaintenanceEnsemble:
         )
 
         if alert_tier == "NORMAL":
-            recommended_action = (
-                "Machine operating normally. "
-                "Continue routine monitoring."
-            )
+            
+            feature_text = (
+            ", ".join(anomalous_features)
+            if anomalous_features
+            else "sensor drift patterns"
+        )
+
+        recommended_action = (
+            "Anomaly detected. "
+            f"Inspect features: "
+            f"{feature_text}. "
+            "Create maintenance ticket."
+        )
 
         elif alert_tier == "ANOMALY":
             recommended_action = (
