@@ -163,3 +163,33 @@ class PredictiveLSTM:
         self.model = load_model(file_path)
 
         logger.info(f"LSTM model loaded from {file_path}")
+        
+    @classmethod
+    def load_model(
+        cls,
+        model_path: str,
+    ):
+        """
+        Load trained LSTM model.
+        """
+
+        from tensorflow.keras.models import (
+            load_model,
+        )
+
+        logger.info(
+            f"Loading LSTM model from "
+            f"{model_path}"
+        )
+
+        instance = cls.__new__(cls)
+
+        instance.model = load_model(
+            model_path
+        )
+
+        logger.info(
+            "LSTM model loaded successfully"
+        )
+
+        return instance
