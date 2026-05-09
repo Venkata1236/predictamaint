@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.core.logging import app_logger
-
+from app.routes.analyze import router as analyze_router
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -20,6 +20,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(
+    analyze_router,
+    prefix="/api/v1",
+    tags=["Analysis"],
+)
 
 @app.on_event("startup")
 async def startup_event():
