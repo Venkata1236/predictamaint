@@ -1,0 +1,413 @@
+{
+  "machine_id": "CNC_002",
+  "readings": [
+    {
+      "timestamp": "2026-05-09T22:00:00",
+      "air_temp": 298.1,
+      "process_temp": 308.6,
+      "rotational_speed": 1500,
+      "torque": 45,
+      "tool_wear": 20
+    },
+    {
+      "timestamp": "2026-05-09T22:00:01",
+      "air_temp": 298.2,
+      "process_temp": 308.7,
+      "rotational_speed": 1498,
+      "torque": 46,
+      "tool_wear": 22
+    },
+    {
+      "timestamp": "2026-05-09T22:00:02",
+      "air_temp": 298.3,
+      "process_temp": 308.8,
+      "rotational_speed": 1495,
+      "torque": 47,
+      "tool_wear": 24
+    },
+    {
+      "timestamp": "2026-05-09T22:00:03",
+      "air_temp": 298.4,
+      "process_temp": 308.9,
+      "rotational_speed": 1492,
+      "torque": 48,
+      "tool_wear": 26
+    },
+    {
+      "timestamp": "2026-05-09T22:00:04",
+      "air_temp": 298.5,
+      "process_temp": 309.0,
+      "rotational_speed": 1490,
+      "torque": 49,
+      "tool_wear": 28
+    },
+    {
+      "timestamp": "2026-05-09T22:00:05",
+      "air_temp": 298.6,
+      "process_temp": 309.1,
+      "rotational_speed": 1488,
+      "torque": 50,
+      "tool_wear": 30
+    },
+    {
+      "timestamp": "2026-05-09T22:00:06",
+      "air_temp": 298.7,
+      "process_temp": 309.2,
+      "rotational_speed": 1485,
+      "torque": 51,
+      "tool_wear": 32
+    },
+    {
+      "timestamp": "2026-05-09T22:00:07",
+      "air_temp": 298.8,
+      "process_temp": 309.3,
+      "rotational_speed": 1482,
+      "torque": 52,
+      "tool_wear": 34
+    },
+    {
+      "timestamp": "2026-05-09T22:00:08",
+      "air_temp": 298.9,
+      "process_temp": 309.4,
+      "rotational_speed": 1480,
+      "torque": 53,
+      "tool_wear": 36
+    },
+    {
+      "timestamp": "2026-05-09T22:00:09",
+      "air_temp": 299.0,
+      "process_temp": 309.5,
+      "rotational_speed": 1478,
+      "torque": 54,
+      "tool_wear": 38
+    },
+
+    {
+      "timestamp": "2026-05-09T22:00:10",
+      "air_temp": 299.1,
+      "process_temp": 309.6,
+      "rotational_speed": 1475,
+      "torque": 55,
+      "tool_wear": 40
+    },
+    {
+      "timestamp": "2026-05-09T22:00:11",
+      "air_temp": 299.2,
+      "process_temp": 309.7,
+      "rotational_speed": 1472,
+      "torque": 56,
+      "tool_wear": 42
+    },
+    {
+      "timestamp": "2026-05-09T22:00:12",
+      "air_temp": 299.3,
+      "process_temp": 309.8,
+      "rotational_speed": 1470,
+      "torque": 57,
+      "tool_wear": 44
+    },
+    {
+      "timestamp": "2026-05-09T22:00:13",
+      "air_temp": 299.4,
+      "process_temp": 309.9,
+      "rotational_speed": 1468,
+      "torque": 58,
+      "tool_wear": 46
+    },
+    {
+      "timestamp": "2026-05-09T22:00:14",
+      "air_temp": 299.5,
+      "process_temp": 310.0,
+      "rotational_speed": 1465,
+      "torque": 59,
+      "tool_wear": 48
+    },
+
+    {
+      "timestamp": "2026-05-09T22:00:15",
+      "air_temp": 299.6,
+      "process_temp": 310.1,
+      "rotational_speed": 1462,
+      "torque": 60,
+      "tool_wear": 50
+    },
+    {
+      "timestamp": "2026-05-09T22:00:16",
+      "air_temp": 299.7,
+      "process_temp": 310.2,
+      "rotational_speed": 1460,
+      "torque": 61,
+      "tool_wear": 52
+    },
+    {
+      "timestamp": "2026-05-09T22:00:17",
+      "air_temp": 299.8,
+      "process_temp": 310.3,
+      "rotational_speed": 1458,
+      "torque": 62,
+      "tool_wear": 54
+    },
+    {
+      "timestamp": "2026-05-09T22:00:18",
+      "air_temp": 299.9,
+      "process_temp": 310.4,
+      "rotational_speed": 1455,
+      "torque": 63,
+      "tool_wear": 56
+    },
+    {
+      "timestamp": "2026-05-09T22:00:19",
+      "air_temp": 300.0,
+      "process_temp": 310.5,
+      "rotational_speed": 1452,
+      "torque": 64,
+      "tool_wear": 58
+    },
+
+    {
+      "timestamp": "2026-05-09T22:00:20",
+      "air_temp": 300.1,
+      "process_temp": 310.6,
+      "rotational_speed": 1450,
+      "torque": 65,
+      "tool_wear": 60
+    },
+    {
+      "timestamp": "2026-05-09T22:00:21",
+      "air_temp": 300.2,
+      "process_temp": 310.7,
+      "rotational_speed": 1448,
+      "torque": 66,
+      "tool_wear": 62
+    },
+    {
+      "timestamp": "2026-05-09T22:00:22",
+      "air_temp": 300.3,
+      "process_temp": 310.8,
+      "rotational_speed": 1445,
+      "torque": 67,
+      "tool_wear": 64
+    },
+    {
+      "timestamp": "2026-05-09T22:00:23",
+      "air_temp": 300.4,
+      "process_temp": 310.9,
+      "rotational_speed": 1442,
+      "torque": 68,
+      "tool_wear": 66
+    },
+    {
+      "timestamp": "2026-05-09T22:00:24",
+      "air_temp": 300.5,
+      "process_temp": 311.0,
+      "rotational_speed": 1440,
+      "torque": 69,
+      "tool_wear": 68
+    },
+
+    {
+      "timestamp": "2026-05-09T22:00:25",
+      "air_temp": 300.6,
+      "process_temp": 311.1,
+      "rotational_speed": 1438,
+      "torque": 70,
+      "tool_wear": 70
+    },
+    {
+      "timestamp": "2026-05-09T22:00:26",
+      "air_temp": 300.7,
+      "process_temp": 311.2,
+      "rotational_speed": 1435,
+      "torque": 71,
+      "tool_wear": 72
+    },
+    {
+      "timestamp": "2026-05-09T22:00:27",
+      "air_temp": 300.8,
+      "process_temp": 311.3,
+      "rotational_speed": 1432,
+      "torque": 72,
+      "tool_wear": 74
+    },
+    {
+      "timestamp": "2026-05-09T22:00:28",
+      "air_temp": 300.9,
+      "process_temp": 311.4,
+      "rotational_speed": 1430,
+      "torque": 73,
+      "tool_wear": 76
+    },
+    {
+      "timestamp": "2026-05-09T22:00:29",
+      "air_temp": 301.0,
+      "process_temp": 311.5,
+      "rotational_speed": 1428,
+      "torque": 74,
+      "tool_wear": 78
+    },
+
+    {
+      "timestamp": "2026-05-09T22:00:30",
+      "air_temp": 301.1,
+      "process_temp": 311.6,
+      "rotational_speed": 1425,
+      "torque": 75,
+      "tool_wear": 80
+    },
+    {
+      "timestamp": "2026-05-09T22:00:31",
+      "air_temp": 301.2,
+      "process_temp": 311.7,
+      "rotational_speed": 1422,
+      "torque": 76,
+      "tool_wear": 82
+    },
+    {
+      "timestamp": "2026-05-09T22:00:32",
+      "air_temp": 301.3,
+      "process_temp": 311.8,
+      "rotational_speed": 1420,
+      "torque": 77,
+      "tool_wear": 84
+    },
+    {
+      "timestamp": "2026-05-09T22:00:33",
+      "air_temp": 301.4,
+      "process_temp": 311.9,
+      "rotational_speed": 1418,
+      "torque": 78,
+      "tool_wear": 86
+    },
+    {
+      "timestamp": "2026-05-09T22:00:34",
+      "air_temp": 301.5,
+      "process_temp": 312.0,
+      "rotational_speed": 1415,
+      "torque": 79,
+      "tool_wear": 88
+    },
+
+    {
+      "timestamp": "2026-05-09T22:00:35",
+      "air_temp": 301.6,
+      "process_temp": 312.1,
+      "rotational_speed": 1412,
+      "torque": 80,
+      "tool_wear": 90
+    },
+    {
+      "timestamp": "2026-05-09T22:00:36",
+      "air_temp": 301.7,
+      "process_temp": 312.2,
+      "rotational_speed": 1410,
+      "torque": 81,
+      "tool_wear": 92
+    },
+    {
+      "timestamp": "2026-05-09T22:00:37",
+      "air_temp": 301.8,
+      "process_temp": 312.3,
+      "rotational_speed": 1408,
+      "torque": 82,
+      "tool_wear": 94
+    },
+    {
+      "timestamp": "2026-05-09T22:00:38",
+      "air_temp": 301.9,
+      "process_temp": 312.4,
+      "rotational_speed": 1405,
+      "torque": 83,
+      "tool_wear": 96
+    },
+    {
+      "timestamp": "2026-05-09T22:00:39",
+      "air_temp": 302.0,
+      "process_temp": 312.5,
+      "rotational_speed": 1402,
+      "torque": 84,
+      "tool_wear": 98
+    },
+
+    {
+      "timestamp": "2026-05-09T22:00:40",
+      "air_temp": 302.1,
+      "process_temp": 312.6,
+      "rotational_speed": 1400,
+      "torque": 85,
+      "tool_wear": 100
+    },
+    {
+      "timestamp": "2026-05-09T22:00:41",
+      "air_temp": 302.2,
+      "process_temp": 312.7,
+      "rotational_speed": 1398,
+      "torque": 86,
+      "tool_wear": 102
+    },
+    {
+      "timestamp": "2026-05-09T22:00:42",
+      "air_temp": 302.3,
+      "process_temp": 312.8,
+      "rotational_speed": 1395,
+      "torque": 87,
+      "tool_wear": 104
+    },
+    {
+      "timestamp": "2026-05-09T22:00:43",
+      "air_temp": 302.4,
+      "process_temp": 312.9,
+      "rotational_speed": 1392,
+      "torque": 88,
+      "tool_wear": 106
+    },
+    {
+      "timestamp": "2026-05-09T22:00:44",
+      "air_temp": 302.5,
+      "process_temp": 313.0,
+      "rotational_speed": 1390,
+      "torque": 89,
+      "tool_wear": 108
+    },
+
+    {
+      "timestamp": "2026-05-09T22:00:45",
+      "air_temp": 302.6,
+      "process_temp": 313.1,
+      "rotational_speed": 1388,
+      "torque": 90,
+      "tool_wear": 110
+    },
+    {
+      "timestamp": "2026-05-09T22:00:46",
+      "air_temp": 302.7,
+      "process_temp": 313.2,
+      "rotational_speed": 1385,
+      "torque": 91,
+      "tool_wear": 112
+    },
+    {
+      "timestamp": "2026-05-09T22:00:47",
+      "air_temp": 302.8,
+      "process_temp": 313.3,
+      "rotational_speed": 1382,
+      "torque": 92,
+      "tool_wear": 114
+    },
+    {
+      "timestamp": "2026-05-09T22:00:48",
+      "air_temp": 302.9,
+      "process_temp": 313.4,
+      "rotational_speed": 1380,
+      "torque": 93,
+      "tool_wear": 116
+    },
+    {
+      "timestamp": "2026-05-09T22:00:49",
+      "air_temp": 303.0,
+      "process_temp": 313.5,
+      "rotational_speed": 1378,
+      "torque": 94,
+      "tool_wear": 118
+    }
+  ]
+}
