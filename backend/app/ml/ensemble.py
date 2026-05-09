@@ -1,161 +1,214 @@
-import numpy as np
+from typing import Dict, List
 
+import joblib
+import numpy as np
 from loguru import logger
 
-from app.core.config import settings
-from app.ml.isolation_forest import (
-    IsolationForestDetector,
+from app.ml.lstm_model import (
+    PredictiveLSTM,
 )
-from app.ml.lstm_model import PredictiveLSTM
 
 
 class PredictiveMaintenanceEnsemble:
+    """
+    Ensemble engine combining:
+    - LSTM failure prediction
+    - Isolation Forest anomaly detection
+    """
+
     def __init__(
         self,
-        lstm_model: PredictiveLSTM,
-        isolation_detector: IsolationForestDetector,
+        lstm_model_path: str,
+        scaler_path: str,
+        isolation_model_path: str,
+        isolation_scaler_path: str,
     ):
+        logger.info(
+            "Initializing ensemble engine"
+        )
 
-        self.lstm_model = lstm_model
+        self.lstm_model = (
+            PredictiveLSTM.load_model(
+                lstm_model_path
+            )
+        )
 
-        self.isolation_detector = isolation_detector
+        self.scaler = joblib.load(
+            scaler_path
+        )
 
-    def calculate_ensemble_score(
+        self.isolation_forest = (
+            joblib.load(
+                isolation_model_path
+            )
+        )
+
+        self.isolation_scaler = (
+            joblib.load(
+                isolation_scaler_path
+            )
+        )
+
+    def _calculate_isolation_score(
         self,
-        lstm_probability: float,
-        isolation_score: float,
+        sensor_reading: np.ndarray,
     ) -> float:
+        """
+        Calculate normalized anomaly score.
+        """
+
+        scaled_reading = (
+            self.isolation_scaler
+            .transform(sensor_reading)
+        )
+
+        raw_score = (
+            self.isolation_forest
+            .decision_function(
+                scaled_reading
+            )[0]
+        )
+
+        normalized_score = (
+            1 / (1 + np.exp(raw_score))
+        )
+
+        return float(normalized_score)
+
+    def _detect_anomalous_features(
+        self,
+        sensor_reading: np.ndarray,
+    ) -> List[str]:
+        """
+        Detect suspicious features.
+        """
+
+        feature_names = [
+            "air_temp",
+            "process_temp",
+            "rotational_speed",
+            "torque",
+            "tool_wear",
+        ]
+
+        anomalous_features = []
+
+        values = sensor_reading[0]
+
+        thresholds = {
+            "air_temp": 320,
+            "process_temp": 330,
+            "rotational_speed": 3000,
+            "torque": 150,
+            "tool_wear": 200,
+        }
+
+        for idx, feature in enumerate(
+            feature_names
+        ):
+            if (
+                values[idx]
+                > thresholds[feature]
+            ):
+                anomalous_features.append(
+                    feature
+                )
+
+        return anomalous_features
+
+    def analyze_machine_state(
+        self,
+        sensor_reading: np.ndarray,
+        sensor_window: np.ndarray,
+    ) -> Dict:
+        """
+        Analyze machine state using ensemble.
+        """
+
+        logger.info(
+            "Running ensemble analysis"
+        )
+
+        scaled_window = (
+            self.scaler.transform(
+                sensor_window.reshape(-1, 5)
+            ).reshape(1, 50, 5)
+        )
+
+        lstm_probability = (
+            self.lstm_model.predict(
+                scaled_window
+            )
+        )
+
+        isolation_score = (
+            self._calculate_isolation_score(
+                sensor_reading
+            )
+        )
 
         ensemble_score = (
             0.7 * lstm_probability
-        ) + (
-            0.3 * isolation_score
+            + 0.3 * isolation_score
         )
 
-        ensemble_score = np.clip(
-            ensemble_score,
-            0,
-            1,
+        if ensemble_score < 0.3:
+            alert_tier = "NORMAL"
+
+        elif ensemble_score < 0.7:
+            alert_tier = "ANOMALY"
+
+        else:
+            alert_tier = "CRITICAL"
+
+        anomalous_features = (
+            self._detect_anomalous_features(
+                sensor_reading
+            )
         )
-
-        return float(ensemble_score)
-
-    def classify_alert_tier(
-        self,
-        ensemble_score: float,
-    ) -> str:
-
-        if (
-            ensemble_score <
-            settings.ALERT_NORMAL_THRESHOLD
-        ):
-            return "NORMAL"
-
-        elif (
-            ensemble_score <
-            settings.ALERT_CRITICAL_THRESHOLD
-        ):
-            return "ANOMALY"
-
-        return "CRITICAL"
-
-    def generate_recommended_action(
-        self,
-        alert_tier: str,
-        anomalous_features: list,
-    ) -> str:
 
         if alert_tier == "NORMAL":
-
-            return (
+            recommended_action = (
                 "Machine operating normally. "
                 "Continue routine monitoring."
             )
 
-        if alert_tier == "ANOMALY":
-
-            return (
+        elif alert_tier == "ANOMALY":
+            recommended_action = (
                 "Anomaly detected. "
                 f"Inspect features: "
                 f"{', '.join(anomalous_features)}. "
                 "Create maintenance ticket."
             )
 
-        return (
-            "CRITICAL condition detected. "
-            f"Immediate inspection required for: "
-            f"{', '.join(anomalous_features)}. "
-            "Dispatch maintenance team immediately."
-        )
-
-    def analyze_machine_state(
-        self,
-        window_data,
-        latest_sensor_array,
-        latest_sensor_dict,
-        baseline_means,
-    ):
-
-        logger.info(
-            "Running ensemble analysis"
-        )
-
-        lstm_probability = (
-            self.lstm_model.predict_probability(
-                window_data
+        else:
+            recommended_action = (
+                "CRITICAL condition detected. "
+                "Immediate shutdown recommended. "
+                "Dispatch maintenance team."
             )
-        )
 
-        isolation_score = (
-            self.isolation_detector.predict_anomaly_score(
-                latest_sensor_array
-            )
-        )
-
-        ensemble_score = (
-            self.calculate_ensemble_score(
-                lstm_probability,
-                isolation_score,
-            )
-        )
-
-        alert_tier = (
-            self.classify_alert_tier(
-                ensemble_score
-            )
-        )
-
-        anomalous_features = (
-            self.isolation_detector.detect_anomalous_features(
-                latest_sensor_dict,
-                baseline_means,
-            )
-        )
-
-        recommended_action = (
-            self.generate_recommended_action(
-                alert_tier,
-                anomalous_features,
-            )
-        )
-
-        logger.info(
-            f"Ensemble Score: {ensemble_score:.4f}"
-        )
-
-        logger.info(
-            f"Alert Tier: {alert_tier}"
-        )
-
-        return {
+        result = {
             "alert_tier": alert_tier,
-            "ensemble_score": ensemble_score,
+            "ensemble_score": float(
+                ensemble_score
+            ),
             "lstm_failure_probability":
-                lstm_probability,
+                float(lstm_probability),
+
             "isolation_forest_score":
-                isolation_score,
+                float(isolation_score),
+
             "anomalous_features":
                 anomalous_features,
+
             "recommended_action":
                 recommended_action,
         }
+
+        logger.info(
+            f"Ensemble analysis completed: "
+            f"{alert_tier}"
+        )
+
+        return result
