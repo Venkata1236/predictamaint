@@ -193,3 +193,19 @@ class PredictiveLSTM:
         )
 
         return instance
+    def predict(
+        self,
+        X,
+    ):
+        """
+        Run inference on sequence window.
+        """
+
+        prediction = (
+            self.model.predict(
+                X,
+                verbose=0,
+            )[0][0]
+        )
+
+        return float(prediction)
