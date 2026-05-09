@@ -1,18 +1,13 @@
-# Backend
-backend/.env
-backend/venv/
-backend/logs/
-backend/__pycache__/
+# ML Artifacts
+backend/saved_models/
 
-# Frontend
-frontend/node_modules/
-frontend/dist/
-frontend/.env
+# Dataset
+backend/app/data/
 
-# OS
-.DS_Store
-Thumbs.db
+# Python Cache
+__pycache__/
+*.pyc
 
-# IDE
-.vscode/
-.idea/
+# Environment
+.env
+venv/
