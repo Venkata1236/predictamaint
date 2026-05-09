@@ -95,7 +95,7 @@ class IsolationForestDetector:
         self,
         sensor_reading: dict,
         baseline_means: dict,
-        threshold: float = 2.0,
+        threshold: float = 0.15,
     ):
 
         anomalous_features = []
