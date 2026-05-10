@@ -105,9 +105,10 @@ function App() {
         <div
             style={{
                 display:
-                  window.innerWidth < 1000
-                  ? "block"
-                  : "flex",
+                    window.innerWidth < 1000
+                    ? "block"
+                    : "flex",
+
                 background: "#0f172a",
             }}
         >
@@ -130,6 +131,10 @@ function App() {
                             "space-between",
 
                         alignItems: "center",
+
+                        flexWrap: "wrap",
+
+                        gap: "20px",
 
                         marginBottom: "20px",
                     }}
@@ -248,10 +253,16 @@ function App() {
 
                         <div
                             style={{
-                                display: "flex",
+                                display: "grid",
+
+                                gridTemplateColumns:
+                                    window.innerWidth < 900
+                                    ? "1fr"
+                                    : "repeat(auto-fit, minmax(220px, 1fr))",
+
                                 gap: "20px",
+
                                 marginBottom: "20px",
-                                flexWrap: "wrap",
                             }}
                         >
 
@@ -309,10 +320,13 @@ function App() {
 
                         <div
                             style={{
+                                display: "grid",
+
                                 gridTemplateColumns:
-                                window.innerWidth < 1200
-                                ? "1fr"
-                                : "2fr 1fr",
+                                    window.innerWidth < 1200
+                                    ? "1fr"
+                                    : "2fr 1fr",
+
                                 gap: "20px",
 
                                 marginTop: "20px",
