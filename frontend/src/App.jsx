@@ -21,6 +21,26 @@ import SensorMetricCard from
 import AnomalyAlertBanner from
 "./components/AnomalyAlertBanner"
 
+import IncidentLog from
+"./components/IncidentLog"
+
+const [incidents, setIncidents] =
+    useState([])
+
+if (
+    data.alert_tier !== "NORMAL"
+) {
+
+    setIncidents((prev) => [
+
+        {
+            ...data,
+        },
+
+        ...prev,
+    ].slice(0, 10))
+}
+
 {
     data && (
 
