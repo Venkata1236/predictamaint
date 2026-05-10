@@ -26,7 +26,7 @@ inference_service = (
 )
 
 sensor_buffer = deque(
-    maxlen=10
+    maxlen=50
 )
 
 
@@ -62,12 +62,12 @@ async def sensor_stream(
                 reading["tool_wear"],
             ])
 
-            if len(sensor_buffer) < 10:
+            if len(sensor_buffer) < 50:
                 continue
 
             sensor_window = np.array(
                 sensor_buffer
-            ).reshape(1, 10, 5)
+            ).reshape(1, 50, 5)
 
             latest_reading = np.array([
                 sensor_buffer[-1]
