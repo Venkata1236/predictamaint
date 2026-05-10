@@ -36,6 +36,9 @@ import DiagnosticReportModal from
 import LoadingScreen from
 "./components/LoadingScreen"
 
+import LiveAlertToast from
+"./components/LiveAlertToast"
+
 function App() {
 
     const {
