@@ -92,6 +92,7 @@ function App() {
                 padding: "30px",
                 minHeight: "100vh",
                 background: "#0f172a",
+                color: "white",
             }}
         >
 
@@ -264,47 +265,54 @@ function App() {
                 )
             }
 
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns:
-                        "2fr 1fr",
+            {
+                chartData.length > 0 && (
 
-                    gap: "20px",
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns:
+                                "2fr 1fr",
 
-                    marginTop: "20px",
-                }}
-            >
+                            gap: "20px",
 
-                <div>
+                            marginTop: "20px",
+                        }}
+                    >
 
-                    <RealtimeChart
-                        data={chartData}
-                    />
+                        <div>
 
-                </div>
+                            <RealtimeChart
+                                data={chartData}
+                            />
 
-                <div>
+                        </div>
 
-                    <MaintenanceTicket
-                        incident={
-                            incidents[0]
-                        }
-                    />
+                        <div>
 
-                    <DiagnosticReportModal
-                        incident={
-                            incidents[0]
-                        }
-                    />
+                            <MaintenanceTicket
+                                incident={
+                                    incidents[0]
+                                }
+                            />
 
-                    <IncidentLog
-                        incidents={incidents}
-                    />
+                            <DiagnosticReportModal
+                                incident={
+                                    incidents[0]
+                                }
+                            />
 
-                </div>
+                            <IncidentLog
+                                incidents={
+                                    incidents
+                                }
+                            />
 
-            </div>
+                        </div>
+
+                    </div>
+                )
+            }
 
         </div>
     )
