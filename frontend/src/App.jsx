@@ -24,6 +24,9 @@ import AnomalyAlertBanner from
 import IncidentLog from
 "./components/IncidentLog"
 
+import MaintenanceTicket from
+"./components/MaintenanceTicket"
+
 function App() {
 
     const {
@@ -208,6 +211,11 @@ function App() {
 
             <IncidentLog
                 incidents={incidents}
+            />
+            <MaintenanceTicket
+                incident={
+                    incidents[0]
+                }
             />
 
         </div>
