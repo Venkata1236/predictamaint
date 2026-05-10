@@ -30,6 +30,9 @@ import MaintenanceTicket from
 import DiagnosticReportModal from
 "./components/DiagnosticReportModal"
 
+import Sidebar from
+"./components/Sidebar"
+
 function App() {
 
     const {
