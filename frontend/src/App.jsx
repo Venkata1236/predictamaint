@@ -27,6 +27,9 @@ import IncidentLog from
 import MaintenanceTicket from
 "./components/MaintenanceTicket"
 
+import DiagnosticReportModal from
+"./components/DiagnosticReportModal"
+
 function App() {
 
     const {
@@ -270,6 +273,11 @@ function App() {
                 <div>
 
                     <MaintenanceTicket
+                        incident={
+                            incidents[0]
+                        }
+
+                    <DiagnosticReportModal
                         incident={
                             incidents[0]
                         }
