@@ -30,6 +30,13 @@ const Sidebar = () => {
 
                 borderRight:
                     "1px solid #1e293b",
+
+                position:
+                    window.innerWidth < 1000
+                    ? "relative"
+                    : "sticky",
+
+                top: 0,
             }}
         >
 
@@ -37,6 +44,7 @@ const Sidebar = () => {
                 style={{
                     marginBottom: "40px",
                     fontSize: "28px",
+                    color: "white",
                 }}
             >
                 PredictaMaint
@@ -45,8 +53,13 @@ const Sidebar = () => {
             <div
                 style={{
                     display: "flex",
+
                     flexDirection:
-                        "column",
+                        window.innerWidth < 1000
+                        ? "row"
+                        : "column",
+
+                    flexWrap: "wrap",
 
                     gap: "12px",
                 }}
@@ -71,6 +84,8 @@ const Sidebar = () => {
                                     "Dashboard"
                                     ? "#1e293b"
                                     : "transparent",
+
+                                color: "white",
 
                                 cursor:
                                     "pointer",
