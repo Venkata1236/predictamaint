@@ -62,6 +62,18 @@ function App() {
                     torque:
                         data.readings
                         .torque,
+
+                    air_temp:
+                        data.readings
+                        .air_temp,
+
+                    process_temp:
+                        data.readings
+                        .process_temp,
+
+                    rotational_speed:
+                        data.readings
+                        .rotational_speed,
                 },
             ]
 
@@ -312,6 +324,7 @@ function App() {
 
                     </div>
                 )
+                
             }
 
         </div>
