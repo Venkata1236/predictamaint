@@ -3,6 +3,9 @@ import {
     useState,
 } from "react"
 
+import Sidebar from
+"./components/Sidebar"
+
 import MachineStatusCard from
 "./components/MachineStatusCard"
 
@@ -29,9 +32,6 @@ import MaintenanceTicket from
 
 import DiagnosticReportModal from
 "./components/DiagnosticReportModal"
-
-import Sidebar from
-"./components/Sidebar"
 
 function App() {
 
@@ -104,242 +104,253 @@ function App() {
 
         <div
             style={{
-                padding: "30px",
-                minHeight: "100vh",
+                display: "flex",
                 background: "#0f172a",
-                color: "white",
             }}
         >
 
+            <Sidebar />
+
             <div
                 style={{
-                    display: "flex",
-                    justifyContent:
-                        "space-between",
-
-                    alignItems: "center",
-
-                    marginBottom: "20px",
+                    flex: 1,
+                    padding: "30px",
+                    minHeight: "100vh",
+                    color: "white",
                 }}
             >
 
-                <div>
-
-                    <h1>
-                        PredictaMaint
-                    </h1>
-
-                    <p
-                        style={{
-                            opacity: 0.7,
-                            marginTop: "5px",
-                        }}
-                    >
-                        Real-Time Industrial
-                        Predictive Maintenance
-                        Platform
-                    </p>
-
-                    <p
-                        style={{
-                            marginTop: "10px",
-                            color: "#f59e0b",
-                            fontWeight: "bold",
-                        }}
-                    >
-                        Active Incidents:
-                        {" "}
-                        {incidents.length}
-                    </p>
-
-                </div>
-
                 <div
                     style={{
-                        background: "#1e293b",
-                        padding: "12px 18px",
-                        borderRadius: "12px",
                         display: "flex",
+                        justifyContent:
+                            "space-between",
+
                         alignItems: "center",
-                        gap: "8px",
+
+                        marginBottom: "20px",
                     }}
                 >
 
+                    <div>
+
+                        <h1>
+                            PredictaMaint
+                        </h1>
+
+                        <p
+                            style={{
+                                opacity: 0.7,
+                                marginTop: "5px",
+                            }}
+                        >
+                            Real-Time Industrial
+                            Predictive Maintenance
+                            Platform
+                        </p>
+
+                        <p
+                            style={{
+                                marginTop: "10px",
+                                color: "#f59e0b",
+                                fontWeight: "bold",
+                            }}
+                        >
+                            Active Incidents:
+                            {" "}
+                            {incidents.length}
+                        </p>
+
+                    </div>
+
                     <div
                         style={{
-                            width: "10px",
-                            height: "10px",
-                            borderRadius: "50%",
-
-                            background:
-                                status ===
-                                "connected"
-                                ? "#22c55e"
-                                : "#ef4444",
-                        }}
-                    />
-
-                    <span
-                        style={{
-                            color:
-                                status ===
-                                "connected"
-                                ? "#22c55e"
-                                : "#ef4444",
-
-                            fontWeight: "bold",
+                            background: "#1e293b",
+                            padding: "12px 18px",
+                            borderRadius: "12px",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
                         }}
                     >
-                        {status}
-                    </span>
+
+                        <div
+                            style={{
+                                width: "10px",
+                                height: "10px",
+                                borderRadius: "50%",
+
+                                background:
+                                    status ===
+                                    "connected"
+                                    ? "#22c55e"
+                                    : "#ef4444",
+                            }}
+                        />
+
+                        <span
+                            style={{
+                                color:
+                                    status ===
+                                    "connected"
+                                    ? "#22c55e"
+                                    : "#ef4444",
+
+                                fontWeight: "bold",
+                            }}
+                        >
+                            {status}
+                        </span>
+
+                    </div>
 
                 </div>
 
-            </div>
+                {
+                    data && (
 
-            {
-                data && (
-
-                    <AnomalyAlertBanner
-                        alertTier={
-                            data.alert_tier
-                        }
-
-                        anomalousFeatures={
-                            data.anomalous_features
-                        }
-                    />
-                )
-            }
-
-            {
-                data && (
-
-                    <MachineStatusCard
-                        machineId={
-                            data.machine_id
-                        }
-
-                        alertTier={
-                            data.alert_tier
-                        }
-
-                        score={
-                            data.ensemble_score
-                        }
-                    />
-                )
-            }
-
-            {
-                data && (
-
-                    <div
-                        style={{
-                            display: "flex",
-                            gap: "20px",
-                            marginBottom: "20px",
-                            flexWrap: "wrap",
-                        }}
-                    >
-
-                        <SensorMetricCard
-                            title="Air Temperature"
-                            value={
-                                data.readings
-                                .air_temp
-                            }
-                            unit="K"
-                            status="normal"
-                        />
-
-                        <SensorMetricCard
-                            title="Process Temperature"
-                            value={
-                                data.readings
-                                .process_temp
-                            }
-                            unit="K"
-                            status="normal"
-                        />
-
-                        <SensorMetricCard
-                            title="Rotational Speed"
-                            value={
-                                data.readings
-                                .rotational_speed
-                            }
-                            unit="RPM"
-                            status="normal"
-                        />
-
-                        <SensorMetricCard
-                            title="Torque"
-                            value={
-                                data.readings
-                                .torque
-                            }
-                            unit="Nm"
-                            status={
+                        <AnomalyAlertBanner
+                            alertTier={
                                 data.alert_tier
-                                === "ANOMALY"
-                                ? "warning"
-                                : "normal"
+                            }
+
+                            anomalousFeatures={
+                                data.anomalous_features
                             }
                         />
+                    )
+                }
 
-                    </div>
-                )
-            }
+                {
+                    data && (
 
-            {
-                chartData.length > 0 && (
+                        <MachineStatusCard
+                            machineId={
+                                data.machine_id
+                            }
 
-                    <div
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns:
-                                "2fr 1fr",
+                            alertTier={
+                                data.alert_tier
+                            }
 
-                            gap: "20px",
+                            score={
+                                data.ensemble_score
+                            }
+                        />
+                    )
+                }
 
-                            marginTop: "20px",
-                        }}
-                    >
+                {
+                    data && (
 
-                        <div>
+                        <div
+                            style={{
+                                display: "flex",
+                                gap: "20px",
+                                marginBottom: "20px",
+                                flexWrap: "wrap",
+                            }}
+                        >
 
-                            <RealtimeChart
-                                data={chartData}
+                            <SensorMetricCard
+                                title="Air Temperature"
+                                value={
+                                    data.readings
+                                    .air_temp
+                                }
+                                unit="K"
+                                status="normal"
+                            />
+
+                            <SensorMetricCard
+                                title="Process Temperature"
+                                value={
+                                    data.readings
+                                    .process_temp
+                                }
+                                unit="K"
+                                status="normal"
+                            />
+
+                            <SensorMetricCard
+                                title="Rotational Speed"
+                                value={
+                                    data.readings
+                                    .rotational_speed
+                                }
+                                unit="RPM"
+                                status="normal"
+                            />
+
+                            <SensorMetricCard
+                                title="Torque"
+                                value={
+                                    data.readings
+                                    .torque
+                                }
+                                unit="Nm"
+                                status={
+                                    data.alert_tier
+                                    === "ANOMALY"
+                                    ? "warning"
+                                    : "normal"
+                                }
                             />
 
                         </div>
+                    )
+                }
 
-                        <div>
+                {
+                    chartData.length > 0 && (
 
-                            <MaintenanceTicket
-                                incident={
-                                    incidents[0]
-                                }
-                            />
+                        <div
+                            style={{
+                                display: "grid",
+                                gridTemplateColumns:
+                                    "2fr 1fr",
 
-                            <DiagnosticReportModal
-                                incident={
-                                    incidents[0]
-                                }
-                            />
+                                gap: "20px",
 
-                            <IncidentLog
-                                incidents={
-                                    incidents
-                                }
-                            />
+                                marginTop: "20px",
+                            }}
+                        >
+
+                            <div>
+
+                                <RealtimeChart
+                                    data={chartData}
+                                />
+
+                            </div>
+
+                            <div>
+
+                                <MaintenanceTicket
+                                    incident={
+                                        incidents[0]
+                                    }
+                                />
+
+                                <DiagnosticReportModal
+                                    incident={
+                                        incidents[0]
+                                    }
+                                />
+
+                                <IncidentLog
+                                    incidents={
+                                        incidents
+                                    }
+                                />
+
+                            </div>
 
                         </div>
+                    )
+                }
 
-                    </div>
-                )
-            }
+            </div>
 
         </div>
     )
