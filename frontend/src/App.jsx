@@ -104,7 +104,10 @@ function App() {
 
         <div
             style={{
-                display: "flex",
+                display:
+                  window.innerWidth < 1000
+                  ? "block"
+                  : "flex",
                 background: "#0f172a",
             }}
         >
@@ -306,10 +309,10 @@ function App() {
 
                         <div
                             style={{
-                                display: "grid",
                                 gridTemplateColumns:
-                                    "2fr 1fr",
-
+                                window.innerWidth < 1200
+                                ? "1fr"
+                                : "2fr 1fr",
                                 gap: "20px",
 
                                 marginTop: "20px",
