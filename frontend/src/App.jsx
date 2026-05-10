@@ -137,6 +137,18 @@ function App() {
                         Platform
                     </p>
 
+                    <p
+                        style={{
+                            marginTop: "10px",
+                            color: "#f59e0b",
+                            fontWeight: "bold",
+                        }}
+                    >
+                        Active Incidents:
+                        {" "}
+                        {incidents.length}
+                    </p>
+
                 </div>
 
                 <div
@@ -324,7 +336,6 @@ function App() {
 
                     </div>
                 )
-                
             }
 
         </div>
@@ -332,4 +343,3 @@ function App() {
 }
 
 export default App
-
