@@ -103,6 +103,15 @@ function App() {
 
     }, [data])
 
+    if (
+        status !== "connected"
+    ) {
+
+        return (
+            <LoadingScreen />
+        )
+    }
+
     return (
 
         <div
