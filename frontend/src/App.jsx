@@ -294,5 +294,19 @@ function App() {
         </div>
     )
 }
+<div
+    style={{
+        width: "10px",
+        height: "10px",
+        borderRadius: "50%",
+        background:
+            status === "connected"
+            ? "#22c55e"
+            : "#ef4444",
 
+        display: "inline-block",
+
+        marginRight: "8px",
+    }}
+/>
 export default App
