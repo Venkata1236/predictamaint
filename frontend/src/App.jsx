@@ -205,18 +205,41 @@ function App() {
                 )
             }
 
-            <RealtimeChart
-                data={chartData}
-            />
+            <div
+    style={{
+        display: "grid",
+        gridTemplateColumns:
+            "2fr 1fr",
 
-            <IncidentLog
-                incidents={incidents}
-            />
-            <MaintenanceTicket
-                incident={
-                    incidents[0]
-                }
-            />
+        gap: "20px",
+
+        marginTop: "20px",
+    }}
+>
+
+    <div>
+
+        <RealtimeChart
+            data={chartData}
+        />
+
+    </div>
+
+    <div>
+
+        <MaintenanceTicket
+            incident={
+                incidents[0]
+            }
+        />
+
+        <IncidentLog
+            incidents={incidents}
+        />
+
+    </div>
+
+</div>
 
         </div>
     )
