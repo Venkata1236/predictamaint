@@ -15,6 +15,70 @@ import useWebSocket from
 import { WS_URL } from
 "./services/api"
 
+import SensorMetricCard from
+"./components/SensorMetricCard"
+
+{
+    data && (
+
+        <div
+            style={{
+                display: "flex",
+                gap: "20px",
+                marginBottom: "20px",
+                flexWrap: "wrap",
+            }}
+        >
+
+            <SensorMetricCard
+                title="Air Temperature"
+                value={
+                    data.readings
+                    .air_temp
+                }
+                unit="K"
+                status="normal"
+            />
+
+            <SensorMetricCard
+                title="Process Temperature"
+                value={
+                    data.readings
+                    .process_temp
+                }
+                unit="K"
+                status="normal"
+            />
+
+            <SensorMetricCard
+                title="Rotational Speed"
+                value={
+                    data.readings
+                    .rotational_speed
+                }
+                unit="RPM"
+                status="normal"
+            />
+
+            <SensorMetricCard
+                title="Torque"
+                value={
+                    data.readings
+                    .torque
+                }
+                unit="Nm"
+                status={
+                    data.alert_tier
+                    === "ANOMALY"
+                    ? "warning"
+                    : "normal"
+                }
+            />
+
+        </div>
+    )
+}
+
 function App() {
 
     const {
