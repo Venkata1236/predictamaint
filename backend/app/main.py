@@ -4,6 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.logging import app_logger
 from app.routes.analyze import router as analyze_router
+from app.routes.websocket import (
+    router as websocket_router,
+)
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -24,6 +27,10 @@ app.include_router(
     analyze_router,
     prefix="/api/v1",
     tags=["Analysis"],
+)
+
+app.include_router(
+    websocket_router
 )
 
 @app.on_event("startup")
