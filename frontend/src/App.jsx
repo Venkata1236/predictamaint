@@ -54,6 +54,11 @@ function App() {
     const [incidents, setIncidents] =
         useState([])
 
+    const [
+        toastIncident,
+        setToastIncident,
+    ] = useState(null)
+
     useEffect(() => {
 
         if (!data) return
@@ -102,6 +107,14 @@ function App() {
                 ...prev,
 
             ].slice(0, 10))
+
+            setToastIncident(data)
+
+            setTimeout(() => {
+
+                setToastIncident(null)
+
+            }, 5000)
         }
 
     }, [data])
@@ -381,6 +394,12 @@ function App() {
                         </div>
                     )
                 }
+
+                <LiveAlertToast
+                    incident={
+                        toastIncident
+                    }
+                />
 
             </div>
 
