@@ -17,42 +17,111 @@ const MachineStatusCard = ({
         return "#22c55e"
     }
 
+    const isCritical =
+        alertTier === "CRITICAL"
+
     return (
+
         <div
             style={{
                 background: "#1e293b",
-                padding: "20px",
-                borderRadius: "16px",
+
+                padding: "24px",
+
+                borderRadius: "18px",
+
                 marginBottom: "20px",
-                border: `2px solid ${getColor()}`
+
+                border:
+                    `2px solid ${getColor()}`,
+
+                animation:
+                    isCritical
+                    ? "pulseCritical 1.5s infinite"
+                    : "none",
+
+                transition:
+                    "all 0.3s ease",
             }}
         >
 
-            <h2>
-                {machineId}
-            </h2>
-
-            <p
+            <div
                 style={{
-                    color: getColor(),
-                    fontWeight: "bold",
-                    marginTop: "10px",
+                    display: "flex",
+                    justifyContent:
+                        "space-between",
+
+                    alignItems: "center",
                 }}
             >
-                {alertTier}
-            </p>
 
-            <p
+                <div>
+
+                    <h2>
+                        {machineId}
+                    </h2>
+
+                    <p
+                        style={{
+                            marginTop: "8px",
+                            opacity: 0.7,
+                        }}
+                    >
+                        Industrial CNC Unit
+                    </p>
+
+                </div>
+
+                <div
+                    style={{
+                        background:
+                            getColor(),
+
+                        color: "white",
+
+                        padding:
+                            "10px 16px",
+
+                        borderRadius:
+                            "999px",
+
+                        fontWeight:
+                            "bold",
+                    }}
+                >
+                    {alertTier}
+                </div>
+
+            </div>
+
+            <div
                 style={{
-                    marginTop: "10px",
+                    marginTop: "20px",
                 }}
             >
-                Ensemble Score:
-                {" "}
-                {(
-                    score * 100
-                ).toFixed(2)}%
-            </p>
+
+                <p
+                    style={{
+                        opacity: 0.7,
+                    }}
+                >
+                    Ensemble Risk Score
+                </p>
+
+                <h1
+                    style={{
+                        marginTop: "10px",
+                        fontSize: "42px",
+                    }}
+                >
+                    {
+                        (
+                            score * 100
+                        ).toFixed(1)
+                    }%
+                </h1>
+
+            </div>
 
         </div>
     )
