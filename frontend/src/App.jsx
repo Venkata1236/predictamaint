@@ -24,99 +24,6 @@ import AnomalyAlertBanner from
 import IncidentLog from
 "./components/IncidentLog"
 
-const [incidents, setIncidents] =
-    useState([])
-
-if (
-    data.alert_tier !== "NORMAL"
-) {
-
-    setIncidents((prev) => [
-
-        {
-            ...data,
-        },
-
-        ...prev,
-    ].slice(0, 10))
-}
-
-{
-    data && (
-
-        <AnomalyAlertBanner
-            alertTier={
-                data.alert_tier
-            }
-
-            anomalousFeatures={
-                data.anomalous_features
-            }
-        />
-    )
-}
-
-{
-    data && (
-
-        <div
-            style={{
-                display: "flex",
-                gap: "20px",
-                marginBottom: "20px",
-                flexWrap: "wrap",
-            }}
-        >
-
-            <SensorMetricCard
-                title="Air Temperature"
-                value={
-                    data.readings
-                    .air_temp
-                }
-                unit="K"
-                status="normal"
-            />
-
-            <SensorMetricCard
-                title="Process Temperature"
-                value={
-                    data.readings
-                    .process_temp
-                }
-                unit="K"
-                status="normal"
-            />
-
-            <SensorMetricCard
-                title="Rotational Speed"
-                value={
-                    data.readings
-                    .rotational_speed
-                }
-                unit="RPM"
-                status="normal"
-            />
-
-            <SensorMetricCard
-                title="Torque"
-                value={
-                    data.readings
-                    .torque
-                }
-                unit="Nm"
-                status={
-                    data.alert_tier
-                    === "ANOMALY"
-                    ? "warning"
-                    : "normal"
-                }
-            />
-
-        </div>
-    )
-}
-
 function App() {
 
     const {
@@ -127,6 +34,9 @@ function App() {
     )
 
     const [chartData, setChartData] =
+        useState([])
+
+    const [incidents, setIncidents] =
         useState([])
 
     useEffect(() => {
@@ -151,6 +61,21 @@ function App() {
 
             return updated.slice(-20)
         })
+
+        if (
+            data.alert_tier !== "NORMAL"
+        ) {
+
+            setIncidents((prev) => [
+
+                {
+                    ...data,
+                },
+
+                ...prev,
+
+            ].slice(0, 10))
+        }
 
     }, [data])
 
@@ -182,25 +107,107 @@ function App() {
                 {status}
             </p>
 
-            {data && (
+            {
+                data && (
 
-                <MachineStatusCard
-                    machineId={
-                        data.machine_id
-                    }
+                    <AnomalyAlertBanner
+                        alertTier={
+                            data.alert_tier
+                        }
 
-                    alertTier={
-                        data.alert_tier
-                    }
+                        anomalousFeatures={
+                            data.anomalous_features
+                        }
+                    />
+                )
+            }
 
-                    score={
-                        data.ensemble_score
-                    }
-                />
-            )}
+            {
+                data && (
+
+                    <MachineStatusCard
+                        machineId={
+                            data.machine_id
+                        }
+
+                        alertTier={
+                            data.alert_tier
+                        }
+
+                        score={
+                            data.ensemble_score
+                        }
+                    />
+                )
+            }
+
+            {
+                data && (
+
+                    <div
+                        style={{
+                            display: "flex",
+                            gap: "20px",
+                            marginBottom: "20px",
+                            flexWrap: "wrap",
+                        }}
+                    >
+
+                        <SensorMetricCard
+                            title="Air Temperature"
+                            value={
+                                data.readings
+                                .air_temp
+                            }
+                            unit="K"
+                            status="normal"
+                        />
+
+                        <SensorMetricCard
+                            title="Process Temperature"
+                            value={
+                                data.readings
+                                .process_temp
+                            }
+                            unit="K"
+                            status="normal"
+                        />
+
+                        <SensorMetricCard
+                            title="Rotational Speed"
+                            value={
+                                data.readings
+                                .rotational_speed
+                            }
+                            unit="RPM"
+                            status="normal"
+                        />
+
+                        <SensorMetricCard
+                            title="Torque"
+                            value={
+                                data.readings
+                                .torque
+                            }
+                            unit="Nm"
+                            status={
+                                data.alert_tier
+                                === "ANOMALY"
+                                ? "warning"
+                                : "normal"
+                            }
+                        />
+
+                    </div>
+                )
+            }
 
             <RealtimeChart
                 data={chartData}
+            />
+
+            <IncidentLog
+                incidents={incidents}
             />
 
         </div>
