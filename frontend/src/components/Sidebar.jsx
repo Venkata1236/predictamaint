@@ -17,7 +17,10 @@ const Sidebar = () => {
 
         <div
             style={{
-                width: "260px",
+                width:
+                    window.innerWidth < 1000
+                    ? "100%"
+                    : "260px",
 
                 background: "#111827",
 
