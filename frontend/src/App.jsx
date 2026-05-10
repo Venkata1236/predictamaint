@@ -131,11 +131,25 @@ function App() {
                         background: "#1e293b",
                         padding: "12px 18px",
                         borderRadius: "12px",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
                     }}
                 >
 
-                    WebSocket:
-                    {" "}
+                    <div
+                        style={{
+                            width: "10px",
+                            height: "10px",
+                            borderRadius: "50%",
+
+                            background:
+                                status ===
+                                "connected"
+                                ? "#22c55e"
+                                : "#ef4444",
+                        }}
+                    />
 
                     <span
                         style={{
@@ -276,6 +290,7 @@ function App() {
                         incident={
                             incidents[0]
                         }
+                    />
 
                     <DiagnosticReportModal
                         incident={
@@ -294,19 +309,5 @@ function App() {
         </div>
     )
 }
-<div
-    style={{
-        width: "10px",
-        height: "10px",
-        borderRadius: "50%",
-        background:
-            status === "connected"
-            ? "#22c55e"
-            : "#ef4444",
 
-        display: "inline-block",
-
-        marginRight: "8px",
-    }}
-/>
 export default App
