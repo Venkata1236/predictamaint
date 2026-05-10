@@ -92,23 +92,65 @@ function App() {
             }}
         >
 
-            <h1
+            <div
                 style={{
-                    marginBottom: "20px",
-                }}
-            >
-                PredictaMaint
-            </h1>
+                    display: "flex",
+                    justifyContent:
+                        "space-between",
 
-            <p
-                style={{
+                    alignItems: "center",
+
                     marginBottom: "20px",
                 }}
             >
-                WebSocket Status:
-                {" "}
-                {status}
-            </p>
+
+                <div>
+
+                    <h1>
+                        PredictaMaint
+                    </h1>
+
+                    <p
+                        style={{
+                            opacity: 0.7,
+                            marginTop: "5px",
+                        }}
+                    >
+                        Real-Time Industrial
+                        Predictive Maintenance
+                        Platform
+                    </p>
+
+                </div>
+
+                <div
+                    style={{
+                        background: "#1e293b",
+                        padding: "12px 18px",
+                        borderRadius: "12px",
+                    }}
+                >
+
+                    WebSocket:
+                    {" "}
+
+                    <span
+                        style={{
+                            color:
+                                status ===
+                                "connected"
+                                ? "#22c55e"
+                                : "#ef4444",
+
+                            fontWeight: "bold",
+                        }}
+                    >
+                        {status}
+                    </span>
+
+                </div>
+
+            </div>
 
             {
                 data && (
@@ -206,40 +248,40 @@ function App() {
             }
 
             <div
-    style={{
-        display: "grid",
-        gridTemplateColumns:
-            "2fr 1fr",
+                style={{
+                    display: "grid",
+                    gridTemplateColumns:
+                        "2fr 1fr",
 
-        gap: "20px",
+                    gap: "20px",
 
-        marginTop: "20px",
-    }}
->
+                    marginTop: "20px",
+                }}
+            >
 
-    <div>
+                <div>
 
-        <RealtimeChart
-            data={chartData}
-        />
+                    <RealtimeChart
+                        data={chartData}
+                    />
 
-    </div>
+                </div>
 
-    <div>
+                <div>
 
-        <MaintenanceTicket
-            incident={
-                incidents[0]
-            }
-        />
+                    <MaintenanceTicket
+                        incident={
+                            incidents[0]
+                        }
+                    />
 
-        <IncidentLog
-            incidents={incidents}
-        />
+                    <IncidentLog
+                        incidents={incidents}
+                    />
 
-    </div>
+                </div>
 
-</div>
+            </div>
 
         </div>
     )
