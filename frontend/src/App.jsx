@@ -33,6 +33,9 @@ import MaintenanceTicket from
 import DiagnosticReportModal from
 "./components/DiagnosticReportModal"
 
+import LoadingScreen from
+"./components/LoadingScreen"
+
 function App() {
 
     const {
