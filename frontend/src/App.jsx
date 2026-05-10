@@ -18,6 +18,24 @@ import { WS_URL } from
 import SensorMetricCard from
 "./components/SensorMetricCard"
 
+import AnomalyAlertBanner from
+"./components/AnomalyAlertBanner"
+
+{
+    data && (
+
+        <AnomalyAlertBanner
+            alertTier={
+                data.alert_tier
+            }
+
+            anomalousFeatures={
+                data.anomalous_features
+            }
+        />
+    )
+}
+
 {
     data && (
 
