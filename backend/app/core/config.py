@@ -1,33 +1,36 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import (
+    BaseSettings,
+    SettingsConfigDict,
+)
 
 
 class Settings(BaseSettings):
-    APP_NAME: str = "PredictaMaint"
-    APP_VERSION: str = "1.0.0"
-    DEBUG: bool = True
 
-    API_V1_STR: str = "/api/v1"
+    OPENAI_API_KEY: str = "demo"
 
-    OPENAI_API_KEY: str
+    DATABASE_URL: str = (
+        "sqlite:///./predictamaint.db"
+    )
 
-    DATABASE_URL: str
+    LANGCHAIN_API_KEY: str = "demo"
 
-    LANGCHAIN_API_KEY: str
-    LANGCHAIN_TRACING_V2: bool = True
-    LANGCHAIN_PROJECT: str = "predictamaint"
+    LSTM_MODEL_PATH: str = (
+        "saved_models/lstm_model.h5"
+    )
 
-    LSTM_MODEL_PATH: str
-    ISOLATION_FOREST_PATH: str
-    SCALER_PATH: str
+    ISOLATION_FOREST_PATH: str = (
+        "saved_models/isolation_forest.pkl"
+    )
 
-    WEBSOCKET_INTERVAL_SECONDS: int = 2
+    SCALER_PATH: str = (
+        "saved_models/scaler.pkl"
+    )
 
-    ALERT_NORMAL_THRESHOLD: float = 0.3
-    ALERT_CRITICAL_THRESHOLD: float = 0.7
-
-    model_config = SettingsConfigDict(
-        env_file=".env",
-        case_sensitive=True
+    model_config = (
+        SettingsConfigDict(
+            env_file=".env",
+            extra="ignore",
+        )
     )
 
 
