@@ -6,6 +6,10 @@ from pydantic_settings import (
 
 class Settings(BaseSettings):
 
+    APP_NAME: str = "PredictaMaint API"
+
+    API_V1_STR: str = "/api/v1"
+
     OPENAI_API_KEY: str = "demo"
 
     DATABASE_URL: str = (
