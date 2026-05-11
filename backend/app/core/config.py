@@ -8,6 +8,10 @@ class Settings(BaseSettings):
 
     APP_NAME: str = "PredictaMaint API"
 
+    APP_VERSION: str = "1.0.0"
+
+    DEBUG: bool = True
+
     API_V1_STR: str = "/api/v1"
 
     OPENAI_API_KEY: str = "demo"
